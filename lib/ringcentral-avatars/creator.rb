@@ -8,6 +8,7 @@ module RingCentral
   module Avatars
     class Creator
       DEFAULT_SIZE = 600
+      DEFAULT_FORMAT = 'png'
 
       attr_accessor :avatar_opts
       attr_accessor :client
@@ -28,7 +29,7 @@ module RingCentral
           avatar_opts[:size] = DEFAULT_SIZE
         end
         unless avatar_opts.key? :format
-          avatar_opts[:format] = 'png'
+          avatar_opts[:format] = DEFAULT_FORMAT
         end
         return avatar_opts
       end
@@ -76,9 +77,9 @@ module RingCentral
 
       ##
       # Determines if extension has an existing avatar
-      # Checks by looking ofr the presence of the `etag` property
+      # Checks by looking for the presence of the `etag` property
       def has_avatar(ext)
-        return ext['profileImage'].key?('etag') ? true : false
+        ext['profileImage'].key?('etag') ? true : false
       end
 
       def get_avatar_tmp_file(ext)
