@@ -48,7 +48,7 @@ require 'ringcentral_sdk'
 client = RingCentralSdk.new [...]
 
 avatars = RingCentral::Avatars.new client                                # Default options
-avatars = RingCentral::Avatars.new client, avatar_opts: {font_size: 250} # Avatarly options
+avatars = RingCentral::Avatars.new client, avatar_opts: {font_size: 275} # Avatarly options
 
 avatars.create_defaults             # create default avatars only
 avatars.create_all                  # create all avatars, overwriting existing avatars
