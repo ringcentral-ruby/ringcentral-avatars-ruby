@@ -27,6 +27,12 @@ The images will look like the following in the RingCentral softphone:
 
 This library requires ImageMagick.
 
+## Installation
+
+```bash
+$ gem install ringcentral-avatars
+```
+
 ## Usage
 
 ```ruby
