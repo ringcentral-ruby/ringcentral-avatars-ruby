@@ -50,8 +50,8 @@ avatars = RingCentral::Avatars.new client
 avatars.create_defaults             # create default avatars only
 avatars.create_all                  # create all avatars, overwriting existing avatars
 
-avatars.create_mine                 # does not overwrite user avatar
-avatars.create_mine overwrite: true # overwrite existing user avatars
+avatars.create_mine                 # does not overwrite existing user avatar
+avatars.create_mine overwrite: true # overwrite existing user avatar
 ```
 
 ### Change Log
