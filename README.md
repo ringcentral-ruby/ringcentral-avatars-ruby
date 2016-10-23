@@ -39,11 +39,11 @@ See [CHANGELOG.md](CHANGELOG.md)
 
 Project Repo
 
-* https://github.com/grokify/ringcentral-avatars-ruby
+* https://github.com/ringcentral-ruby/ringcentral-avatars-ruby
 
 RingCentral Ruby SDK
 
-* https://github.com/grokify/ringcentral-sdk-ruby
+* https://github.com/ringcentral-ruby/ringcentral-sdk-ruby
 
 RingCentral API Explorer
 
@@ -51,7 +51,7 @@ RingCentral API Explorer
 
 ## Contributing
 
-1. Fork it ( http://github.com/grokify/ringcentral-avatars-ruby/fork )
+1. Fork it ( http://github.com/ringcentral-ruby/ringcentral-avatars-ruby/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -67,19 +67,19 @@ RingCentral Avatars &copy; 2016 by John Wang
  [gem-version-link]: http://badge.fury.io/rb/ringcentral-avatars
  [downloads-svg]: http://ruby-gem-downloads-badge.herokuapp.com/ringcentral-avatars
  [downloads-link]: https://rubygems.org/gems/ringcentral-avatars
- [build-status-svg]: https://api.travis-ci.org/grokify/ringcentral-avatars-ruby.svg?branch=master
- [build-status-link]: https://travis-ci.org/grokify/ringcentral-avatars-ruby
- [coverage-status-svg]: https://coveralls.io/repos/grokify/ringcentral-avatars-ruby/badge.svg?branch=master
- [coverage-status-link]: https://coveralls.io/r/grokify/ringcentral-avatars-ruby?branch=master
- [dependency-status-svg]: https://gemnasium.com/grokify/ringcentral-avatars-ruby.svg
- [dependency-status-link]: https://gemnasium.com/grokify/ringcentral-avatars-ruby
- [codeclimate-status-svg]: https://codeclimate.com/github/grokify/ringcentral-avatars-ruby/badges/gpa.svg
- [codeclimate-status-link]: https://codeclimate.com/github/grokify/ringcentral-avatars-ruby
- [scrutinizer-status-svg]: https://scrutinizer-ci.com/g/grokify/ringcentral-avatars-ruby/badges/quality-score.png?b=master
- [scrutinizer-status-link]: https://scrutinizer-ci.com/g/grokify/ringcentral-avatars-ruby/?branch=master
+ [build-status-svg]: https://api.travis-ci.org/ringcentral-ruby/ringcentral-avatars-ruby.svg?branch=master
+ [build-status-link]: https://travis-ci.org/ringcentral-ruby/ringcentral-avatars-ruby
+ [coverage-status-svg]: https://coveralls.io/repos/ringcentral-ruby/ringcentral-avatars-ruby/badge.svg?branch=master
+ [coverage-status-link]: https://coveralls.io/r/ringcentral-ruby/ringcentral-avatars-ruby?branch=master
+ [dependency-status-svg]: https://gemnasium.com/ringcentral-ruby/ringcentral-avatars-ruby.svg
+ [dependency-status-link]: https://gemnasium.com/ringcentral-ruby/ringcentral-avatars-ruby
+ [codeclimate-status-svg]: https://codeclimate.com/github/ringcentral-ruby/ringcentral-avatars-ruby/badges/gpa.svg
+ [codeclimate-status-link]: https://codeclimate.com/github/ringcentral-ruby/ringcentral-avatars-ruby
+ [scrutinizer-status-svg]: https://scrutinizer-ci.com/g/ringcentral-ruby/ringcentral-avatars-ruby/badges/quality-score.png?b=master
+ [scrutinizer-status-link]: https://scrutinizer-ci.com/g/ringcentral-ruby/ringcentral-avatars-ruby/?branch=master
  [docs-readthedocs-svg]: https://img.shields.io/badge/docs-readthedocs-blue.svg
  [docs-readthedocs-link]: http://ringcentral-avatars-ruby.readthedocs.org/
  [docs-rubydoc-svg]: https://img.shields.io/badge/docs-rubydoc-blue.svg
  [docs-rubydoc-link]: http://www.rubydoc.info/gems/ringcentral-avatars/
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-link]: https://github.com/grokify/ringcentral-avatars-ruby/blob/master/LICENSE.md
+ [license-link]: https://github.com/ringcentral-ruby/ringcentral-avatars-ruby/blob/master/LICENSE.md
