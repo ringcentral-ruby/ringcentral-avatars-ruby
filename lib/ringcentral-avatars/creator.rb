@@ -105,7 +105,7 @@ module RingCentral
           ext = @extensions.extensions_hash[ext_id]
           urls.push avatar_url(ext, opts)
         end
-        return urls
+        urls
       end
 
       def my_avatar_url(opts = {})
@@ -119,7 +119,7 @@ module RingCentral
         token = @client.token.to_hash[:access_token]
         url = ext['profileImage']['uri']
         url += "?access_token=#{token}" if opts[:include_token]
-        return url
+        url
       end
 
       def avatar_mime_type
@@ -127,7 +127,7 @@ module RingCentral
         if types.length == 0
           raise "Unknown avatar format: #{@avatar_opts[:format]}"
         end
-        return types[0].to_s
+        types[0].to_s
       end
 
       def avatar_extension
