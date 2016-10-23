@@ -25,7 +25,9 @@ The images will look like the following in the RingCentral softphone:
 
 ## Pre-requisites
 
-This library requires ImageMagick.
+* This library requires ImageMagick
+* This library requires a RingCentral account
+* A RingCentral administrator account is necessary to update profile images for others
 
 ## Installation
 
