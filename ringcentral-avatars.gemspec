@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version     = version
   s.date        = '2016-10-23'
   s.summary     = 'RingCentral library for auto-generating Gmail style avatars'
-  s.description = 'Create RingCentral default avatars using Gmail-style initial avatars'
+  s.description = 'Create RingCentral avatars using Gmail-style avatars'
   s.authors     = ['John Wang']
   s.email       = 'johncwang@gmail.com'
   s.homepage    = 'https://github.com/grokify/'
