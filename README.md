@@ -7,7 +7,6 @@ RingCentral Avatars
 [![Code Climate][codeclimate-status-svg]][codeclimate-status-link]
 [![Scrutinizer Code Quality][scrutinizer-status-svg]][scrutinizer-status-link]
 [![Downloads][downloads-svg]][downloads-link]
-[![Docs][docs-readthedocs-svg]][docs-readthedocs-link]
 [![Docs][docs-rubydoc-svg]][docs-rubydoc-link]
 [![License][license-svg]][license-link]
 
@@ -81,8 +80,6 @@ RingCentral Avatars &copy; 2016 by John Wang
  [codeclimate-status-link]: https://codeclimate.com/github/ringcentral-ruby/ringcentral-avatars-ruby
  [scrutinizer-status-svg]: https://scrutinizer-ci.com/g/ringcentral-ruby/ringcentral-avatars-ruby/badges/quality-score.png?b=master
  [scrutinizer-status-link]: https://scrutinizer-ci.com/g/ringcentral-ruby/ringcentral-avatars-ruby/?branch=master
- [docs-readthedocs-svg]: https://img.shields.io/badge/docs-readthedocs-blue.svg
- [docs-readthedocs-link]: http://ringcentral-avatars-ruby.readthedocs.org/
  [docs-rubydoc-svg]: https://img.shields.io/badge/docs-rubydoc-blue.svg
  [docs-rubydoc-link]: http://www.rubydoc.info/gems/ringcentral-avatars/
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
