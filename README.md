@@ -12,7 +12,7 @@ RingCentral Avatars
 
 ## Overview
 
-This library will build RingCentral avatars using Gmail-like initial avatars. It can build Gmail-like avatars for the following:
+This library will build [RingCentral](https://ringcentral.com) avatars using Gmail-like initial avatars. It can build Gmail-like avatars for the following:
 
 * all RingCentral users (extensions) without images
 * all RingCentral users, overwriting existing images (useful for testing in Sandbox accounts)
@@ -28,7 +28,7 @@ This library uses [Avatarly](https://github.com/lucek/avatarly) to generate the 
 ## Pre-requisites
 
 * ImageMagick
-* A RingCentral account (production or sandbox)
+* A RingCentral account (production or sandbox) with [REST API access](https://developers.ringcentral.com)
 * A RingCentral administrator account is necessary to update profile images for others
 
 Test first in sandbox. Your app needs to be graduated in order to run against your production account.
@@ -56,7 +56,8 @@ avatars.create_all                  # create all avatars, overwriting existing a
 avatars.create_mine                 # does not overwrite existing user avatar
 avatars.create_mine overwrite: true # overwrite existing user avatar
 
-avatars.create_extension ext        # create an avatar for a specific extension hash
+avatars.create_extension ext                  # create a default for an extension hash
+avatars.create_extension ext, overwrite: true # overwrite existing for an extension hash
 ```
 
 See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
