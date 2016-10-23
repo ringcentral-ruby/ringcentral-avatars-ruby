@@ -55,6 +55,8 @@ avatars.create_all                  # create all avatars, overwriting existing a
 
 avatars.create_mine                 # does not overwrite existing user avatar
 avatars.create_mine overwrite: true # overwrite existing user avatar
+
+avatars.create_extension ext        # create an avatar for a specific extension hash
 ```
 
 See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
