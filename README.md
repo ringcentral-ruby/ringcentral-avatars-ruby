@@ -57,7 +57,7 @@ avatars.create_mine                 # does not overwrite existing user avatar
 avatars.create_mine overwrite: true # overwrite existing user avatar
 ```
 
-See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options.
+See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
 
 ### Change Log
 
