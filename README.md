@@ -25,9 +25,11 @@ The images will look like the following in the RingCentral softphone:
 
 ## Pre-requisites
 
-* This library requires ImageMagick
-* This library requires a RingCentral account
+* ImageMagick
+* A RingCentral account (production or sandbox)
 * A RingCentral administrator account is necessary to update profile images for others
+
+Test first in sandbox. Your app needs to be graduated in order to run against your production account.
 
 ## Installation
 
