@@ -83,10 +83,10 @@ module RingCentral
       end
 
       def get_avatar_tmp_file(ext)
-        avatar_blob = Avatarly.generate_avatar(ext['name'], @avatar_opts)
-        avatar_temp = Tempfile.new(['avatar', avatar_extension])
+        avatar_blob = Avatarly.generate_avatar ext['name'], @avatar_opts
+        avatar_temp = Tempfile.new ['avatar', avatar_extension]
         avatar_temp.binmode
-        avatar_temp.write(avatar_blob)
+        avatar_temp.write avatar_blob
         avatar_temp.flush
         avatar_temp
       end
