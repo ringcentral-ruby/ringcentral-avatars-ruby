@@ -77,7 +77,7 @@ module RingCentral
 
       ##
       # Determines if extension has an existing avatar
-      # Checks by looking ofr the presence of the `etag` property
+      # Checks by looking for the presence of the `etag` property
       def has_avatar(ext)
         ext['profileImage'].key?('etag') ? true : false
       end
