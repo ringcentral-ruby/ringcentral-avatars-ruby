@@ -16,7 +16,7 @@ This library will build RingCentral avatars using Gmail-like initial avatars. It
 
 The images will look like the following in the RingCentral softphone:
 
-![](ringcentral-avatars-softphone.png)
+![](ringcentral-avatars.png)
 
 ## Usage
 
