@@ -2,11 +2,11 @@ require 'ringcentral-avatars/creator'
 
 module RingCentral
   module Avatars
-    VERSION = '0.1.0'
+    VERSION = '0.2.0'
 
     class << self
-      def new(client)
-        RingCentral::Avatars::Creator.new client
+      def new(client, opts = {})
+        RingCentral::Avatars::Creator.new client, opts
       end
     end
   end

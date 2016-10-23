@@ -1,5 +1,6 @@
 require 'avatarly'
 require 'faraday'
+require 'mime/types'
 require 'ringcentral_sdk'
 require 'tempfile'
 
@@ -8,12 +9,28 @@ module RingCentral
     class Creator
       DEFAULT_SIZE = 600
 
+      attr_accessor :avatar_opts
       attr_accessor :client
       attr_accessor :extensions
 
-      def initialize(client)
+      ##
+      # Requires RingCentralSdk instance
+      # `:avatar_opts` is optional to pass-through options for Avatarly
+      def initialize(client, opts = {})
         @client = client
+        @avatar_opts = build_avatar_opts opts[:avatar_opts]
         load_extensions
+      end
+
+      def build_avatar_opts(avatar_opts = {})
+        avatar_opts = {} unless avatar_opts.is_a? Hash
+        unless avatar_opts.key? :size
+          avatar_opts[:size] = DEFAULT_SIZE
+        end
+        unless avatar_opts.key? :format
+          avatar_opts[:format] = 'png'
+        end
+        return avatar_opts
       end
 
       ##
@@ -39,9 +56,10 @@ module RingCentral
       # Convenience method for creating avatar for authorized extension
       # Defaults to not overwriting existing avatar
       def create_mine(opts = {})
-        res = @client.http.get 'account/~/extension/~'
-        create_avatar res.body, opts
+        res_ext = @client.http.get 'account/~/extension/~'
+        res_av = create_avatar res_ext.body, opts
         load_extensions
+        res_av
       end
 
       ##
@@ -52,7 +70,7 @@ module RingCentral
         return if has_avatar(ext) && !opts[:overwrite]
         avatar_temp = get_avatar_tmp_file ext
         url = "account/~/extension/#{ext['id']}/profile-image"
-        image = Faraday::UploadIO.new(avatar_temp.path, 'image/png')
+        image = Faraday::UploadIO.new avatar_temp.path, avatar_mime_type
         @client.http.put url, image: image
       end
 
@@ -64,8 +82,8 @@ module RingCentral
       end
 
       def get_avatar_tmp_file(ext)
-        avatar_blob = Avatarly.generate_avatar(ext['name'], size: DEFAULT_SIZE)
-        avatar_temp = Tempfile.new(['avatar', '.png'])
+        avatar_blob = Avatarly.generate_avatar(ext['name'], @avatar_opts)
+        avatar_temp = Tempfile.new(['avatar', avatar_extension])
         avatar_temp.binmode
         avatar_temp.write(avatar_blob)
         avatar_temp.flush
@@ -80,25 +98,40 @@ module RingCentral
       ##
       # Returns a list of avatar URLs which can be useful for testing purposes
       # Adding the current access token is optional
-      def avatar_urls(include_token = false)
+      def avatar_urls(opts = {})
+        opts[:include_token] = false unless opts.key? :include_token
         urls = []
         @extensions.extensions_hash.keys.sort.each do |ext_id|
           ext = @extensions.extensions_hash[ext_id]
-          urls.push avatar_url(ext, include_token)
+          urls.push avatar_url(ext, opts)
         end
         return urls
       end
 
-      def my_avatar_url(include_token = false)
+      def my_avatar_url(opts = {})
+        opts[:include_token] = false unless opts.key? :include_token
         res = @client.http.get 'account/~/extension/~'
-        avatar_url(res.body, include_token)
+        avatar_url(res.body, opts)
       end
 
-      def avatar_url(ext, include_token = false)
+      def avatar_url(ext, opts = {})
+        opts[:include_token] = false unless opts.key? :include_token
         token = @client.token.to_hash[:access_token]
         url = ext['profileImage']['uri']
-        url += "?access_token=#{token}" if include_token
+        url += "?access_token=#{token}" if opts[:include_token]
         return url
+      end
+
+      def avatar_mime_type
+        types = MIME::Types.type_for @avatar_opts[:format]
+        if types.length == 0
+          raise "Unknown avatar format: #{@avatar_opts[:format]}"
+        end
+        return types[0].to_s
+      end
+
+      def avatar_extension
+        ".#{@avatar_opts[:format]}"
       end
     end
   end

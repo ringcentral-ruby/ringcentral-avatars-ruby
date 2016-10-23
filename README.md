@@ -19,9 +19,11 @@ This library will build RingCentral avatars using Gmail-like initial avatars. It
 * specific extensions
 * authorized user extension only
 
-The images will look like the following in the RingCentral softphone:
+By default, the images will look like the following in the RingCentral softphone:
 
 ![](docs/images/ringcentral-avatars-softphone.png)
+
+This library uses [Avatarly](https://github.com/lucek/avatarly) to generate the avatars and can pass through any avatar option for customization purposes.
 
 ## Pre-requisites
 
@@ -45,14 +47,17 @@ require 'ringcentral_sdk'
 
 client = RingCentralSdk.new [...]
 
-avatars = RingCentral::Avatars.new client
+avatars = RingCentral::Avatars.new client                                # Default options
+avatars = RingCentral::Avatars.new client, avatar_opts: {font_size: 250} # Avatarly options
 
 avatars.create_defaults             # create default avatars only
 avatars.create_all                  # create all avatars, overwriting existing avatars
 
-avatars.create_mine                 # does not overwrite user avatar
-avatars.create_mine overwrite: true # overwrite existing user avatars
+avatars.create_mine                 # does not overwrite existing user avatar
+avatars.create_mine overwrite: true # overwrite existing user avatar
 ```
+
+See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
 
 ### Change Log
 

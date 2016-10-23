@@ -1,6 +1,9 @@
 CHANGELOG
 ---------
-- **2016-10-22**: 0.1.0
+- **2016-10-23**: 0.2.0
+  - Add avatar customization options
+  - Update avatar URLs method signature for options
+- **2016-10-23**: 0.1.0
   - Update module name
   - Update method signatures for options
 - **2016-10-22**: 0.0.1

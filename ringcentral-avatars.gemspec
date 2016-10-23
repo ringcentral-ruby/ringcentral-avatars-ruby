@@ -6,7 +6,7 @@ version = $1
 Gem::Specification.new do |s|
   s.name        = lib
   s.version     = version
-  s.date        = '2016-10-22'
+  s.date        = '2016-10-23'
   s.summary     = 'RingCentral library for auto-generating Gmail style avatars'
   s.description = 'Create RingCentral default avatars using Gmail-style initial avatars'
   s.authors     = ['John Wang']
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'avatarly', '~> 1.5', '>= 1.5.0'
   s.add_dependency 'faraday', '~> 0.9', '>= 0.9'
+  s.add_dependency 'mime-types', '~> 3.0', '>= 3.1'
   s.add_dependency 'ringcentral_sdk', '~> 1', '>= 1.3.4'
 
   s.add_development_dependency 'coveralls'
