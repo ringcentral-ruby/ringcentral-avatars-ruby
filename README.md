@@ -21,11 +21,13 @@ This library will build RingCentral avatars using Gmail-like initial avatars. It
 
 The images will look like the following in the RingCentral softphone:
 
-![](ringcentral-avatars-softphone.png)
+![](docs/images/ringcentral-avatars-softphone.png)
 
 ## Pre-requisites
 
-This library requires ImageMagick.
+* This library requires ImageMagick
+* This library requires a RingCentral account
+* A RingCentral administrator account is necessary to update profile images for others
 
 ## Installation
 
@@ -41,12 +43,13 @@ require 'ringcentral_sdk'
 
 client = RingCentralSdk.new [...]
 
-avatars = RingCentralAvatars.new client
+avatars = RingCentral::Avatars.new client
 
-avatars.create_all       # create defaults only
-avatars.create_all  true # overwrite existing avatars
+avatars.create_defaults             # create default avatars only
+avatars.create_all                  # create all avatars, overwriting existing avatars
 
-avatars.create_mine      # create for authorized user only
+avatars.create_mine                 # does not overwrite user avatar
+avatars.create_mine overwrite: true # overwrite existing user avatars
 ```
 
 ### Change Log
@@ -65,7 +68,7 @@ RingCentral Ruby SDK
 
 RingCentral API Explorer
 
-* http://ringcentral.github.io/api-explorer
+* https://developer.ringcentral.com/api-explorer/latest/index.html
 
 ## Contributing
 
