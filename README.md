@@ -43,7 +43,7 @@ Project Repo
 
 RingCentral Ruby SDK
 
-* https://github.com/grokify/ringcentral-avatars-ruby
+* https://github.com/grokify/ringcentral-sdk-ruby
 
 RingCentral API Explorer
 
@@ -59,9 +59,9 @@ RingCentral API Explorer
 
 ## License
 
-RingCentral SDK is available under an MIT-style license. See [LICENSE.txt](LICENSE.txt) for details.
+RingCentral Avatars is available under an MIT-style license. See [LICENSE.txt](LICENSE.txt) for details.
 
-RingCentral SDK &copy; 2015-2016 by John Wang
+RingCentral Avatars &copy; 2016 by John Wang
 
  [gem-version-svg]: https://badge.fury.io/rb/ringcentral-avatars.svg
  [gem-version-link]: http://badge.fury.io/rb/ringcentral-avatars
