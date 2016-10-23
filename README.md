@@ -12,11 +12,20 @@ RingCentral Avatars
 
 ## Overview
 
-This library will build RingCentral avatars using Gmail-like initial avatars. It requires ImageMagick.
+This library will build RingCentral avatars using Gmail-like initial avatars. It can build Gmail-like avatars for the following:
+
+* all RingCentral users (extensions) without images
+* all RingCentral users, overwriting existing images (useful for testing in Sandbox accounts)
+* specific extensions
+* authorized user extension only
 
 The images will look like the following in the RingCentral softphone:
 
 ![](ringcentral-avatars-softphone.png)
+
+## Pre-requisites
+
+This library requires ImageMagick.
 
 ## Usage
 
