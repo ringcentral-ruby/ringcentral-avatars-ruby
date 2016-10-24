@@ -2,6 +2,7 @@ require 'avatarly'
 require 'faraday'
 require 'mime/types'
 require 'ringcentral_sdk'
+require 'ruby_identicon'
 require 'tempfile'
 
 module RingCentral
@@ -11,6 +12,7 @@ module RingCentral
       DEFAULT_FORMAT = 'png'
 
       attr_accessor :avatar_opts
+      attr_accessor :avatars
       attr_accessor :client
       attr_accessor :extensions
 
@@ -19,19 +21,11 @@ module RingCentral
       # `:avatar_opts` is optional to pass-through options for Avatarly
       def initialize(client, opts = {})
         @client = client
-        @avatar_opts = build_avatar_opts opts[:avatar_opts]
+        if !opts.key?(:initials_opts) && opts.key?(:avatar_opts)
+          opts[:initials_opts] = opts[:avatar_opts]
+        end
+        @avatars = RingCentral::Avatars::MultiAvatar.new opts
         load_extensions
-      end
-
-      def build_avatar_opts(avatar_opts = {})
-        avatar_opts = {} unless avatar_opts.is_a? Hash
-        unless avatar_opts.key? :size
-          avatar_opts[:size] = DEFAULT_SIZE
-        end
-        unless avatar_opts.key? :format
-          avatar_opts[:format] = DEFAULT_FORMAT
-        end
-        return avatar_opts
       end
 
       ##
@@ -69,9 +63,8 @@ module RingCentral
       def create_avatar(ext, opts = {})
         opts[:overwrite] = false unless opts.key?(:overwrite)
         return if has_avatar(ext) && !opts[:overwrite]
-        avatar_temp = get_avatar_tmp_file ext
         url = "account/~/extension/#{ext['id']}/profile-image"
-        image = Faraday::UploadIO.new avatar_temp.path, avatar_mime_type
+        image = @avatars.avatar_faraday_uploadio ext['name']
         @client.http.put url, image: image
       end
 
@@ -80,15 +73,6 @@ module RingCentral
       # Checks by looking for the presence of the `etag` property
       def has_avatar(ext)
         ext['profileImage'].key?('etag') ? true : false
-      end
-
-      def get_avatar_tmp_file(ext)
-        avatar_blob = Avatarly.generate_avatar ext['name'], @avatar_opts
-        avatar_temp = Tempfile.new ['avatar', avatar_extension]
-        avatar_temp.binmode
-        avatar_temp.write avatar_blob
-        avatar_temp.flush
-        avatar_temp
       end
 
       def load_extensions
@@ -122,17 +106,76 @@ module RingCentral
         url += "?access_token=#{token}" if opts[:include_token]
         url
       end
+    end
+  end
+end
+
+module RingCentral
+  module Avatars
+    class MultiAvatar
+      DEFAULT_STYLE = 'initials'
+      AVATARLY_DEFAULTS = {
+        size: 600,
+        format: 'png'
+      }
+      IDENTICON_DEFAULTS = {
+        grid_size: 5,
+        square_size: 70,
+        background_color: 0xffffffff
+      }
+      IDENTICON_DEFAULT_FORMAT = 'png'
+
+      def initialize(opts = {})
+        @avatarly_opts =  inflate_avatarly_opts opts[:initials_opts]
+        @identicon_opts = inflate_identicon_opts opts[:identicon_opts]
+        @style = opts.key?(:style) ? opts[:style] : DEFAULT_STYLE
+      end
+
+      def inflate_avatarly_opts(avatarly_opts = {})
+        avatarly_opts = {} unless avatarly_opts.is_a? Hash
+        AVATARLY_DEFAULTS.merge avatarly_opts
+      end
+
+      def inflate_identicon_opts(identicon_opts = {})
+        identicon_opts = {} unless identicon_opts.is_a? Hash
+        IDENTICON_DEFAULTS.merge identicon_opts
+      end
+
+      def avatar_blob(text, style = nil)
+        style = @style if style.nil?
+        blob = @style == 'initials' \
+          ? Avatarly.generate_avatar(text, @avatarly_opts) \
+          : RubyIdenticon.create(text, @identicon_opts)
+      end
+
+      def avatar_temp_file(text, style = nil)
+        blob = avatar_blob text, style
+        file = Tempfile.new ['avatar', avatar_extension]
+        file.binmode
+        file.write blob
+        file.flush
+        file
+      end
+
+      def avatar_faraday_uploadio(text, style = nil)
+        file = avatar_temp_file text, style
+        image = Faraday::UploadIO.new file.path, avatar_mime_type
+      end
+
+      def avatar_format
+        @style == 'initials' ? @avatarly_opts[:format] : IDENTICON_DEFAULT_FORMAT
+      end
 
       def avatar_mime_type
-        types = MIME::Types.type_for @avatar_opts[:format]
+        types = MIME::Types.type_for avatar_format
         if types.length == 0
-          raise "Unknown avatar format: #{@avatar_opts[:format]}"
+          raise "Unknown avatar format: #{avatar_format}"
         end
         types[0].to_s
       end
 
       def avatar_extension
-        ".#{@avatar_opts[:format]}"
+        ".#{avatar_format}"
       end
     end
   end

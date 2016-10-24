@@ -25,6 +25,8 @@ By default, the images will look like the following in the RingCentral softphone
 
 This library uses [Avatarly](https://github.com/lucek/avatarly) to generate the avatars and can pass through any avatar option for customization purposes.
 
+Experimental [Identicon](https://en.wikipedia.org/wiki/Identicon) support is also included via r[uby_identicon](https://github.com/chrisbranson/ruby_identicon). Please see the source for usage until it gets a bit more use.
+
 ## Pre-requisites
 
 * ImageMagick
