@@ -25,7 +25,7 @@ By default, the images will look like the following in the RingCentral softphone
 
 This library uses [Avatarly](https://github.com/lucek/avatarly) to generate the avatars and can pass through any avatar option for customization purposes.
 
-Experimental [Identicon](https://en.wikipedia.org/wiki/Identicon) support is also included via r[uby_identicon](https://github.com/chrisbranson/ruby_identicon). Please see the source for usage until it gets a bit more use.
+Experimental [Identicon](https://en.wikipedia.org/wiki/Identicon) support is also included via [ruby_identicon](https://github.com/chrisbranson/ruby_identicon). Please see the source for usage until it gets a bit more use.
 
 ## Pre-requisites
 
@@ -58,8 +58,8 @@ avatars.create_all                  # create all avatars, overwriting existing a
 avatars.create_mine                 # does not overwrite existing user avatar
 avatars.create_mine overwrite: true # overwrite existing user avatar
 
-avatars.create_extension ext                  # create a default for an extension hash
-avatars.create_extension ext, overwrite: true # overwrite existing for an extension hash
+avatars.create_avatar ext                  # create a default for an extension hash
+avatars.create_avatar ext, overwrite: true # overwrite existing for an extension hash
 ```
 
 See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
