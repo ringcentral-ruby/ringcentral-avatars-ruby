@@ -6,7 +6,7 @@ version = $1
 Gem::Specification.new do |s|
   s.name        = lib
   s.version     = version
-  s.date        = '2016-10-24'
+  s.date        = '2016-11-03'
   s.summary     = 'RingCentral library for auto-generating Gmail style avatars'
   s.description = 'Create RingCentral avatars using Gmail-style avatars'
   s.authors     = ['John Wang']
