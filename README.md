@@ -21,7 +21,7 @@ This library will build [RingCentral](https://ringcentral.com) avatars using Gma
 
 By default, the images will look like the following in the RingCentral softphone:
 
-![](docs/images/ringcentral-avatars-softphone.png)
+![](https://raw.githubusercontent.com/ringcentral-ruby/ringcentral-avatars-ruby/master/docs/images/ringcentral-avatars-softphone.png)
 
 This library uses [Avatarly](https://github.com/lucek/avatarly) to generate the avatars and can pass through any avatar option for customization purposes.
 
