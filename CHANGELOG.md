@@ -1,8 +1,7 @@
 CHANGELOG
 ---------
-- **2016-11-03**: 0.3.1
+- **2016-11-03**: 0.3.4-0.3.1
   - Add screenshot image to `gemspec`
-- **2016-10-24**: 0.3.0
   - Add identicon support
 - **2016-10-23**: 0.2.0
   - Add avatar customization options
