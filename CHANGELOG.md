@@ -1,7 +1,8 @@
 CHANGELOG
 ---------
-- **2016-11-18**: 0.4.0
+- **2016-11-19**: 0.4.0
   - Add PNG metadata support
+  - Add demo scripts in `./scripts` directory
 - **2016-11-03**: 0.3.4-0.3.1
   - Add screenshot image to `gemspec`
   - Add identicon support
