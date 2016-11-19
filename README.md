@@ -78,6 +78,31 @@ The default description is `RingCentral Default Avatar`. This is useful for trac
 
 See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
 
+## Sample Scripts
+
+The following sample scripts are provided in the GitHub repo under the `./scripts` directory.
+
+* `update_avatar.rb` - Updates all or own avatar image with optional rewrite CLI arguments.
+* `get_avatar.rb` - Retrieve and save own avatar image to `_my_avatar.png` file.
+* `avatar_info.rb` - Parses and dumps PNG metadata for validation of `_my_avatar.png` file.
+
+To run these files, install dependencies and configure the demo with the following: 
+
+```bash
+$ cd scripts
+$ bundle
+$ cp rc_config_sample.env.txt .env
+$ vi .env
+```
+
+Run the scripts with the following:
+
+```bash
+$ ruby update_avatar.rb --overwrite
+$ ruby get_avatar.rb
+$ ruby avatar_info.rb
+```
+
 ### Change Log
 
 See [CHANGELOG.md](CHANGELOG.md)

@@ -16,14 +16,16 @@ client.authorize_user config.user
 
 file = '_my_avatar.png'
 
+# Get user info
 res1 = client.http.get 'account/~/extension/~/'
-
 pp res1.body['profileImage']
 puts res1.status
 
+# Get profile image
 res2 = client.http.get res1.body['profileImage']['uri']
 puts res2.status
 
+# Save profile image
 File.open(file, 'wb') do |fh|
   fh.puts res2.body
 end
