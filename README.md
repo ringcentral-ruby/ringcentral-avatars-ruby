@@ -64,19 +64,19 @@ avatars.create_avatar ext                  # create a default for an extension h
 avatars.create_avatar ext, overwrite: true # overwrite existing for an extension hash
 ```
 
+See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
+
 ### Adding PNG Metadata
 
-RingCentral Avatars supports adding PNG Metadata per the [W3C PNG Specification](https://www.w3.org/TR/PNG/#11textinfo).
+RingCentral Avatars supports adding PNG Metadata per the [W3C PNG Specification](https://www.w3.org/TR/PNG/#11textinfo). This can be useful for tracking avatars created by this library for selective updates vs. avatars uploaded via other means.
+
+The default description is `RingCentral Default Avatar`, however it can be modified as shown below.
 
 ```ruby
 avatars = RingCentral::Avatars.new client, png_metadata: { 'Description': 'RingCentral Avatar' }
 
-avatars.png_metadata['Description'] = 'Updated Description'         
+avatars.png_metadata['Description'] = 'Updated Description'
 ```
-
-The default description is `RingCentral Default Avatar`. This is useful for tracking avatars created using this library.
-
-See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
 
 ## Sample Scripts
 
