@@ -1,9 +1,10 @@
 require 'avatarly'
 require 'chunky_png'
+require 'ruby_identicon'
+
 require 'faraday'
 require 'mime/types'
 require 'ringcentral_sdk'
-require 'ruby_identicon'
 require 'tempfile'
 
 module RingCentral
