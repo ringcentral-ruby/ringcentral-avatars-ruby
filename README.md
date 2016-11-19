@@ -27,6 +27,8 @@ This library uses [Avatarly](https://github.com/lucek/avatarly) to generate the 
 
 Experimental [Identicon](https://en.wikipedia.org/wiki/Identicon) support is also included via [ruby_identicon](https://github.com/chrisbranson/ruby_identicon). Please see the source for usage until it gets a bit more use.
 
+PNG metadata is supported which can be uploaded to and downloaded from RingCentral.
+
 ## Pre-requisites
 
 * ImageMagick
@@ -64,7 +66,7 @@ avatars.create_avatar ext, overwrite: true # overwrite existing for an extension
 
 ### Adding PNG Metadata
 
-RingCentral Avatars supports adding PNG Metadata per the [W3 PNG standard](https://www.w3.org/TR/PNG/#11textinfo).
+RingCentral Avatars supports adding PNG Metadata per the [W3C PNG Specification](https://www.w3.org/TR/PNG/#11textinfo).
 
 ```ruby
 avatars = RingCentral::Avatars.new client, png_metadata: { 'Description': 'RingCentral Avatar' }
