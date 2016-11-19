@@ -62,6 +62,18 @@ avatars.create_avatar ext                  # create a default for an extension h
 avatars.create_avatar ext, overwrite: true # overwrite existing for an extension hash
 ```
 
+### Adding PNG Metadata
+
+RingCentral Avatars supports adding PNG Metadata per the [W3 PNG standard](https://www.w3.org/TR/PNG/#11textinfo).
+
+```ruby
+avatars = RingCentral::Avatars.new client, png_metadata: { 'Description': 'RingCentral Avatar' }
+
+avatars.png_metadata['Description'] = 'Updated Description'         
+```
+
+The default description is `RingCentral Default Avatar`. This is useful for tracking avatars created using this library.
+
 See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
 
 ### Change Log
@@ -81,6 +93,10 @@ RingCentral Ruby SDK
 RingCentral API Explorer
 
 * https://developer.ringcentral.com/api-explorer/latest/index.html
+
+PNG Info
+
+* https://www.w3.org/TR/PNG/#11textinfo
 
 ## Contributing
 

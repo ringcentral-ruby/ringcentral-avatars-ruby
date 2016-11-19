@@ -1,0 +1,6 @@
+source ENV['GEM_SOURCE'] || 'https://rubygems.org'
+
+gem 'chunky_png'
+gem 'multi_json'
+gem 'ringcentral-avatars'
+gem 'ringcentral_sdk'

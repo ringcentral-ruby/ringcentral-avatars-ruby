@@ -1,4 +1,5 @@
 require 'avatarly'
+require 'chunky_png'
 require 'faraday'
 require 'mime/types'
 require 'ringcentral_sdk'
@@ -10,11 +11,15 @@ module RingCentral
     class Creator
       DEFAULT_SIZE = 600
       DEFAULT_FORMAT = 'png'
+      PNG_DEFAULT_METADATA = {
+        'Description' => 'RingCentral Default Avatar'
+      }
 
       attr_accessor :avatar_opts
       attr_accessor :avatars
       attr_accessor :client
       attr_accessor :extensions
+      attr_accessor :png_metadata
 
       ##
       # Requires RingCentralSdk instance
@@ -23,6 +28,11 @@ module RingCentral
         @client = client
         if !opts.key?(:initials_opts) && opts.key?(:avatar_opts)
           opts[:initials_opts] = opts[:avatar_opts]
+        end
+        if opts.key(:png_metadata)
+          opts[:png_metadata] = PNG_DEFAULT_METADATA.merge(opts[:png_metadata])
+        else
+          opts[:png_metadata] = PNG_DEFAULT_METADATA
         end
         @avatars = RingCentral::Avatars::MultiAvatar.new opts
         load_extensions
@@ -129,6 +139,7 @@ module RingCentral
         @avatarly_opts =  inflate_avatarly_opts opts[:initials_opts]
         @identicon_opts = inflate_identicon_opts opts[:identicon_opts]
         @style = opts.key?(:style) ? opts[:style] : DEFAULT_STYLE
+        @png_metadata = opts.key?(:png_metadata) ? opts[:png_metadata] : {}
       end
 
       def inflate_avatarly_opts(avatarly_opts = {})
@@ -146,6 +157,14 @@ module RingCentral
         blob = @style == 'initials' \
           ? Avatarly.generate_avatar(text, @avatarly_opts) \
           : RubyIdenticon.create(text, @identicon_opts)
+        inflate_avatar_blob_png blob
+      end
+
+      def inflate_avatar_blob_png(blob)
+        return blob unless avatar_format == 'png' && @png_metadata
+        img = ChunkyPNG::Image.from_blob blob
+        img.metadata = @png_metadata
+        img.to_blob
       end
 
       def avatar_temp_file(text, style = nil)

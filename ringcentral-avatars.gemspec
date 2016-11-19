@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.2.2'
 
   s.add_dependency 'avatarly', '~> 1.5', '>= 1.5.0'
+  s.add_dependency 'chunky_png', '~> 1.3', '>= 1.3.8'
   s.add_dependency 'faraday', '~> 0.9', '>= 0.9'
   s.add_dependency 'mime-types', '~> 3.0', '>= 3.1'
   s.add_dependency 'ringcentral_sdk', '~> 1', '>= 1.3.4'
