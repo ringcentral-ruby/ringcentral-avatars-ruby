@@ -9,8 +9,6 @@ The RingCentral Profile Image API is a powerful API that can be used to upload i
 
 For this article, we'll cover API basics and then discuss how to set default images using either user initials like Gmail/Office 365 or Identicons. 
 
-This article uses the Ruby language and leverages the community `ringcentral_sdk` SDK gem. It also presents code which is implemented in a similar way in the `ringcentral-avatars` Ruby gem.
-
 We will cover:
 
 1. API basics
@@ -25,9 +23,12 @@ We will cover:
 2. Default images recipe
   1. Getting a list of extensions without avatars
   2. Creating the default image
+  3. Identifying auto-generated default images
+  4. Wrapping it up
 1. Notes
-  1. Identifying auto-generated default images
   2. Throttling
+
+This article uses the Ruby language and leverages the community `ringcentral_sdk` SDK gem. It also presents code which is implemented in a similar way in the `ringcentral-avatars` Ruby gem.
 
 ## API basics
 
@@ -116,7 +117,7 @@ sub.add_observer MyObserver.new()
 
 #### Example event
 
-When a user's extension has changed for any reason, including, profile image updates, an event is fired that matches `account/~/extension` filter mentioned above with the following example format. Using the `extensionId`, the application can retrieve the user's extension info using the `account/~/extension/~` endpoint shown above to verify if the `etag` has changed.
+When a user's extension has changed for any reason, including, profile image updates, an event is fired that matches `account/~/extension` filter mentioned above with the following example format. Once you have the `extensionId` you can retrieve the user extension if to see if the `etag` has changed. If so, you can retrieve and update the image in your app.
 
 ```ruby
 {
@@ -202,8 +203,6 @@ More information can be found for these particular libraries:
 * [`avatarly`](https://rubygems.org/gems/avatarly)
 * [`ruby_identicon`](https://rubygems.org/gems/ruby_identicon)
 
-## Notes
-
 ### Identifying auto-generated default images
 
 Sometimes there may be a need to identify and overwrite only auto-generated images. The code above will not do this because auto-generated images will have an `etag` like user submitted images.
@@ -218,9 +217,32 @@ img.metadata = { 'Description' => 'My Default Avatar' }
 blob = img.to_blob
 ```
 
-Using Ruby
-
 For JPEG, Exif can be implemented and is left as a future exercise.
+
+### Wrapping it up
+
+Much of this code has been implemented in the `ruby-avatars` gem and can be inspected in the gem's source code on GitHub. To use the gem to update your avatar, you can simply use the following commands:
+
+```ruby
+require 'ringcentral-avatars'
+require 'ringcentral_sdk'
+
+client = RingCentralSdk.new [...]
+
+avatars = RingCentral::Avatars.new client                                # Default options
+avatars = RingCentral::Avatars.new client, avatar_opts: {font_size: 275} # Avatarly options
+
+avatars.create_defaults             # create default avatars only
+avatars.create_all                  # create all avatars, overwriting existing avatars
+
+avatars.create_mine                 # does not overwrite existing user avatar
+avatars.create_mine overwrite: true # overwrite existing user avatar
+
+avatars.create_avatar ext                  # create a default for an extension hash
+avatars.create_avatar ext, overwrite: true # overwrite existing for an extension hash
+```
+
+## Notes
 
 ### Throttling
 
@@ -243,10 +265,6 @@ end
 ```
 
 In a future release, this type of throttling should be automatically built into the Ruby SDK.
-
-#### Retrieving the extension image
-
-Once you have the `extensionId` you can retrieve the extension if to see if the `etag` has changed. If so, you can retrieve and update the image in your app.
 
 ## Summary
 
