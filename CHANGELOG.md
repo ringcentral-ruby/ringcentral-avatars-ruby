@@ -1,5 +1,7 @@
 CHANGELOG
 ---------
+- **2016-11-23**: 0.4.2
+  - Add article `NEWS.md`
 - **2016-11-19**: 0.4.1
   - Fix RubyDoc.info documentation rendering
 - **2016-11-19**: 0.4.0
