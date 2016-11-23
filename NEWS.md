@@ -30,7 +30,7 @@ We will cover:
 1. Notes
   2. Throttling
 
-This article uses the Ruby language and leverages the community [`ringcentral_sdk`](https://rubygems.org/gems/ringcentral_sdk) SDK gem. It also presents code which is implemented in a similar way in the [`ringcentral-avatars`](https://rubygems.org/gems/ringcentral-avatars) Ruby gem.
+This article uses the Ruby language and leverages the community [`ringcentral_sdk`](https://rubygems.org/gems/ringcentral_sdk) SDK gem. It presents code which is implemented in a similar way in the [`ringcentral-avatars`](https://rubygems.org/gems/ringcentral-avatars) Ruby gem for discussion purposes. If you just want to use the functionality, you can use the Ruby gem directly.
 
 ## API basics
 
