@@ -185,7 +185,22 @@ The default image can be created in one of several ways that including:
 1. User initials, like Gmail, Office 365, etc.
 2. Identicons, like GitHub, Stack Overflow, Wordpress, etc.
 
-Both of these are supported direclty within `ringcentral-avatars` using `avatarly` and `ruby_identicon` to generate default images.
+Both of these are supported directly within `ringcentral-avatars` using `avatarly` and `ruby_identicon` to generate default images. They also both generate blobs:
+
+```ruby
+# Using Initials
+require 'avatarly'
+blob = Avatarly.generate_avatar 'AZ'
+
+# Using Identicons
+require 'ruby_identicon'
+blob = RubyIdenticon.create 'AZ'
+```
+
+More information can be found for these particular libraries:
+
+* [`avatarly`](https://rubygems.org/gems/avatarly)
+* [`ruby_identicon`](https://rubygems.org/gems/ruby_identicon)
 
 ## Notes
 
@@ -193,7 +208,19 @@ Both of these are supported direclty within `ringcentral-avatars` using `avatarl
 
 Sometimes there may be a need to identify and overwrite only auto-generated images. The code above will not do this because auto-generated images will have an `etag` like user submitted images.
 
-To resolve this, you can add a tag to the image itself which means each image will need to be retrieved and inspected. `RingCentral::Avatars` supports setting PNG metadata attributes that can be used to identify default avatars. For JPEG, Exif can be implemented and is left as a future exercise.
+To resolve this, you can add a tag to the image itself which means each image will need to be retrieved and inspected. `ringcentral-avatars` supports setting PNG metadata attributes that can be used to identify default avatars. This can be done using [`chunky_png`](https://rubygems.org/gems/chunky_png):
+
+```ruby
+require 'chunky_png'
+
+img = ChunkyPNG::Image.from_blob blob
+img.metadata = { 'Description' => 'My Default Avatar' }
+blob = img.to_blob
+```
+
+Using Ruby
+
+For JPEG, Exif can be implemented and is left as a future exercise.
 
 ### Throttling
 
