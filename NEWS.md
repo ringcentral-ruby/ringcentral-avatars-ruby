@@ -1,5 +1,5 @@
-The Profile Image API and Default Images
-========================================
+Using The Profile Image API and Default Images
+==============================================
 
 The RingCentral Profile Image API is a powerful API that can be used to upload images that are used in the corporate address book both individually and administratively across users. Some popular use cases include:
 
