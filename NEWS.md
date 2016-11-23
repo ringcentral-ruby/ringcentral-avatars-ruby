@@ -7,7 +7,9 @@ The RingCentral Profile Image API is a powerful API that can be used to upload i
 2. Uploading images from mobile apps
 3. Setting default images for users
 
-For this article, we'll cover API basics and then discuss how to set default images using either user initials like Gmail/Office 365 or Identicons. 
+For this article, we'll cover API basics and then discuss how to set default images using either user initials like Gmail/Office 365 or Identicons. The initials will look like the following in the RingCentral for Desktop softphone. The avatars will update in the softphone in real-time as they are changed on the backend:
+
+![](https://raw.githubusercontent.com/ringcentral-ruby/ringcentral-avatars-ruby/master/docs/images/ringcentral-avatars-softphone.png)
 
 We will cover:
 
@@ -28,7 +30,7 @@ We will cover:
 1. Notes
   2. Throttling
 
-This article uses the Ruby language and leverages the community `ringcentral_sdk` SDK gem. It also presents code which is implemented in a similar way in the `ringcentral-avatars` Ruby gem.
+This article uses the Ruby language and leverages the community [`ringcentral_sdk`](https://rubygems.org/gems/ringcentral_sdk) SDK gem. It also presents code which is implemented in a similar way in the [`ringcentral-avatars`](https://rubygems.org/gems/ringcentral-avatars) Ruby gem.
 
 ## API basics
 
@@ -221,7 +223,7 @@ For JPEG, Exif can be implemented and is left as a future exercise.
 
 ### Wrapping it up
 
-Much of this code has been implemented in the `ruby-avatars` gem and can be inspected in the gem's source code on GitHub. To use the gem to update your avatar, you can simply use the following commands:
+Much of this code has been implemented in the [`ringcentral-avatars`](https://rubygems.org/gems/ringcentral-avatars) gem and can be inspected in the gem's source code on GitHub. To use the gem to update your avatar, you can simply use the following commands:
 
 ```ruby
 require 'ringcentral-avatars'
