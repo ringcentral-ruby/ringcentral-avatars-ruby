@@ -39,16 +39,17 @@ faradayio = Faraday::UploadIO.new file, types[0]
 
 url = 'account/~/extension/~/profile-image'
 
-res = client.http.put url, image: faradayio
+res1 = client.http.put url, image: faradayio
 
-puts res.status
+puts res1.status
 
-if res.status >= 400
+if res1.status >= 400
   raise "Image Upload Failed with Status: #{res.status}"
 end
-
 
 res2 = client.http.get 'account/~/extension/~'
 
 pp res2.body
 puts res2.status
+
+puts "DONE"
