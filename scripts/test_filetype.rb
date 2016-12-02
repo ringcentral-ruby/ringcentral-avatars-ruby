@@ -1,0 +1,54 @@
+#!ruby
+
+require 'faraday'
+require 'mime/types'
+require 'optparse'
+require 'ringcentral_sdk'
+require 'multi_json'
+require 'pp'
+
+# Usage: test_filetype.rb --filetype=jpg
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: example.rb --filetype=TYPE"
+
+  opts.on("-f", "--filetype=TYPE", "Filetype (png, jpg, gif)") do |v|
+    puts "#{v}"
+    options[:filetype] = v.downcase
+  end
+end.parse!
+
+pp options
+
+file = "test_filetype_#{options[:filetype]}.#{options[:filetype]}"
+
+unless File.exists? file
+  raise "File does not exist: #{file}"
+end
+
+config = RingCentralSdk::REST::Config.new.load_dotenv
+
+client = RingCentralSdk::REST::Client.new
+client.set_app_config config.app
+client.authorize_user config.user
+
+types = MIME::Types.type_for options[:filetype]
+
+faradayio = Faraday::UploadIO.new file, types[0]
+
+url = 'account/~/extension/~/profile-image'
+
+res = client.http.put url, image: faradayio
+
+puts res.status
+
+if res.status >= 400
+  raise "Image Upload Failed with Status: #{res.status}"
+end
+
+
+res2 = client.http.get 'account/~/extension/~'
+
+pp res2.body
+puts res2.status
