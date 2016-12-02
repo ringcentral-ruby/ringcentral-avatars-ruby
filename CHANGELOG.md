@@ -1,5 +1,7 @@
 CHANGELOG
 ---------
+- **2016-12-02**: 0.4.3
+  - Add test script to try PNG, JPG, and GIF filetypes
 - **2016-11-23**: 0.4.2
   - Add article `NEWS.md`
 - **2016-11-19**: 0.4.1

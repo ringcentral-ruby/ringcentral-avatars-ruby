@@ -107,6 +107,10 @@ $ ruby avatar_info.rb
 
 See [CHANGELOG.md](CHANGELOG.md)
 
+## Credits
+
+Test icons files are adapted from freeware [Filetype Icons](http://www.iconarchive.com/show/filetype-icons-by-graphicloads.html) by [GraphicLoads](http://www.iconarchive.com/artist/graphicloads.html).
+
 ## Links
 
 Project Repo
