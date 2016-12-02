@@ -14,12 +14,9 @@ OptionParser.new do |opts|
   opts.banner = "Usage: example.rb --filetype=TYPE"
 
   opts.on("-f", "--filetype=TYPE", "Filetype (png, jpg, gif)") do |v|
-    puts "#{v}"
     options[:filetype] = v.downcase
   end
 end.parse!
-
-pp options
 
 file = "test_filetype_#{options[:filetype]}.#{options[:filetype]}"
 
