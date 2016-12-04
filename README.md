@@ -109,6 +109,14 @@ $ ruby avatar_info.rb
 
 This repo also includes test scripts to upload PNG, JPG, and GIF format images.
 
+```bash
+$ cd ringcentral-avatars-ruby/scripts
+$ vi .env
+$ ruby test_filetype.rb --filetype=png
+$ ruby test_filetype.rb --filetype=jpg
+$ ruby test_filetype.rb --filetype=gif
+```
+
 ### Test cURL command
 
 ```bash
