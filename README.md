@@ -105,6 +105,8 @@ $ ruby avatar_info.rb
 
 ## Test Uploads
 
+The `scripts` directory contains test images for `png`, `jpg`, and `gif` file types: `test_filetype_png.png`, `test_filetype_jpg.jpg`, and `test_filetype_gif.gif`.
+
 ### Test Upload Script
 
 This repo also includes test scripts to upload PNG, JPG, and GIF format images.
