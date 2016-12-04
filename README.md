@@ -119,7 +119,7 @@ $ ruby test_filetype.rb --filetype=jpg
 $ ruby test_filetype.rb --filetype=gif
 ```
 
-### Test cURL command
+### Test cURL Command
 
 ```bash
 $ curl -v -H 'Authorization: Bearer <MY_ACCESS_TOKEN>' -F image=@test_filetype_gif.gif 'https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/profile-image'
