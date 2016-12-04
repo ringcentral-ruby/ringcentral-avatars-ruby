@@ -103,6 +103,18 @@ $ ruby get_avatar.rb
 $ ruby avatar_info.rb
 ```
 
+## Test Uploads
+
+### Test Upload Script
+
+This repo also includes test scripts to upload PNG, JPG, and GIF format images.
+
+### Test cURL command
+
+```bash
+$ curl -v -H 'Authorization: Bearer <MY_ACCESS_TOKEN>' -F image=@test_filetype_gif.gif 'https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/profile-image'
+```
+
 ### Change Log
 
 See [CHANGELOG.md](CHANGELOG.md)
