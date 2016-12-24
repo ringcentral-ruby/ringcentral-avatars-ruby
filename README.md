@@ -3,6 +3,7 @@ RingCentral Avatars
 
 [![Gem Version][gem-version-svg]][gem-version-link]
 [![Build Status][build-status-svg]][build-status-link]
+[![Codacy Badge][codacy-svg]][codacy-link]
 [![Dependency Status][dependency-status-svg]][dependency-status-link]
 [![Code Climate][codeclimate-status-svg]][codeclimate-status-link]
 [![Scrutinizer Code Quality][scrutinizer-status-svg]][scrutinizer-status-link]
@@ -171,6 +172,8 @@ RingCentral Avatars &copy; 2016 by John Wang
  [downloads-link]: https://rubygems.org/gems/ringcentral-avatars
  [build-status-svg]: https://api.travis-ci.org/ringcentral-ruby/ringcentral-avatars-ruby.svg?branch=master
  [build-status-link]: https://travis-ci.org/ringcentral-ruby/ringcentral-avatars-ruby
+ [codacy-svg]: https://api.codacy.com/project/badge/Grade/e82eac58a42d4463885627f78098bbb0
+ [codacy-link]: https://www.codacy.com/app/johncwang/ringcentral-avatars-ruby
  [coverage-status-svg]: https://coveralls.io/repos/ringcentral-ruby/ringcentral-avatars-ruby/badge.svg?branch=master
  [coverage-status-link]: https://coveralls.io/r/ringcentral-ruby/ringcentral-avatars-ruby?branch=master
  [dependency-status-svg]: https://gemnasium.com/ringcentral-ruby/ringcentral-avatars-ruby.svg
