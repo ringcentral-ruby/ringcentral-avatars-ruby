@@ -173,7 +173,7 @@ RingCentral Avatars &copy; 2016 by John Wang
  [build-status-svg]: https://api.travis-ci.org/ringcentral-ruby/ringcentral-avatars-ruby.svg?branch=master
  [build-status-link]: https://travis-ci.org/ringcentral-ruby/ringcentral-avatars-ruby
  [codacy-svg]: https://api.codacy.com/project/badge/Grade/e82eac58a42d4463885627f78098bbb0
- [codacy-link]: https://www.codacy.com/app/johncwang/ringcentral-avatars-ruby
+ [codacy-link]: https://www.codacy.com/app/ringcentral-ruby/ringcentral-avatars-ruby
  [coverage-status-svg]: https://coveralls.io/repos/ringcentral-ruby/ringcentral-avatars-ruby/badge.svg?branch=master
  [coverage-status-link]: https://coveralls.io/r/ringcentral-ruby/ringcentral-avatars-ruby?branch=master
  [dependency-status-svg]: https://gemnasium.com/ringcentral-ruby/ringcentral-avatars-ruby.svg
