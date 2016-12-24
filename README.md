@@ -1,6 +1,8 @@
 RingCentral Avatars
 ===================
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e82eac58a42d4463885627f78098bbb0)](https://www.codacy.com/app/johncwang/ringcentral-avatars-ruby?utm_source=github.com&utm_medium=referral&utm_content=ringcentral-ruby/ringcentral-avatars-ruby&utm_campaign=badger)
+
 [![Gem Version][gem-version-svg]][gem-version-link]
 [![Build Status][build-status-svg]][build-status-link]
 [![Dependency Status][dependency-status-svg]][dependency-status-link]
