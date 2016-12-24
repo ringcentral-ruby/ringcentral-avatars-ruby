@@ -11,9 +11,9 @@ require 'pp'
 
 options = {}
 OptionParser.new do |opts|
-  opts.banner = "Usage: example.rb --filetype=TYPE"
+  opts.banner = 'Usage: example.rb --filetype=TYPE'
 
-  opts.on("-f", "--filetype=TYPE", "Filetype (png, jpg, gif)") do |v|
+  opts.on('-f', '--filetype=TYPE', 'Filetype (png, jpg, gif)') do |v|
     options[:filetype] = v.downcase
   end
 end.parse!
@@ -49,4 +49,4 @@ res2 = client.http.get 'account/~/extension/~'
 pp res2.body
 puts res2.status
 
-puts "DONE"
+puts 'DONE'
