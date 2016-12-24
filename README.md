@@ -103,6 +103,28 @@ $ ruby get_avatar.rb
 $ ruby avatar_info.rb
 ```
 
+## Test Uploads
+
+The `scripts` directory contains test images for `png`, `jpg`, and `gif` file types: `test_filetype_png.png`, `test_filetype_jpg.jpg`, and `test_filetype_gif.gif`.
+
+### Test Upload Script
+
+This repo also includes test scripts to upload PNG, JPG, and GIF format images.
+
+```bash
+$ cd ringcentral-avatars-ruby/scripts
+$ vi .env
+$ ruby test_filetype.rb --filetype=png
+$ ruby test_filetype.rb --filetype=jpg
+$ ruby test_filetype.rb --filetype=gif
+```
+
+### Test cURL Command
+
+```bash
+$ curl -v -H 'Authorization: Bearer <MY_ACCESS_TOKEN>' -F image=@test_filetype_gif.gif 'https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/profile-image'
+```
+
 ### Change Log
 
 See [CHANGELOG.md](CHANGELOG.md)
