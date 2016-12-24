@@ -11,10 +11,10 @@ module RingCentral
   module Avatars
     class Creator
       DEFAULT_SIZE = 600
-      DEFAULT_FORMAT = 'png'
+      DEFAULT_FORMAT = 'png'.freeze
       PNG_DEFAULT_METADATA = {
         'Description' => 'RingCentral Default Avatar'
-      }
+      }.freeze
 
       attr_accessor :avatar_opts
       attr_accessor :avatars
@@ -73,7 +73,7 @@ module RingCentral
       # Defaults to not overwriting existing avatar
       def create_avatar(ext, opts = {})
         opts[:overwrite] = false unless opts.key?(:overwrite)
-        return if has_avatar(ext) && !opts[:overwrite]
+        return if avatar?(ext) && !opts[:overwrite]
         url = "account/~/extension/#{ext['id']}/profile-image"
         image = @avatars.avatar_faraday_uploadio ext['name']
         @client.http.put url, image: image
@@ -82,7 +82,7 @@ module RingCentral
       ##
       # Determines if extension has an existing avatar
       # Checks by looking for the presence of the `etag` property
-      def has_avatar(ext)
+      def avatar?(ext)
         ext['profileImage'].key?('etag') ? true : false
       end
 
@@ -128,13 +128,13 @@ module RingCentral
       AVATARLY_DEFAULTS = {
         size: 600,
         format: 'png'
-      }
+      }.freeze
       IDENTICON_DEFAULTS = {
         grid_size: 5,
         square_size: 70,
         background_color: 0xffffffff
-      }
-      IDENTICON_DEFAULT_FORMAT = 'png'
+      }.freeze
+      IDENTICON_DEFAULT_FORMAT = 'png'.freeze
 
       def initialize(opts = {})
         @avatarly_opts =  inflate_avatarly_opts opts[:initials_opts]
@@ -188,7 +188,7 @@ module RingCentral
 
       def avatar_mime_type
         types = MIME::Types.type_for avatar_format
-        if types.length == 0
+        if types.empty?
           raise "Unknown avatar format: #{avatar_format}"
         end
         types[0].to_s
