@@ -20,7 +20,7 @@ end.parse!
 
 file = "test_filetype_#{options[:filetype]}.#{options[:filetype]}"
 
-unless File.exists? file
+unless File.exist? file
   raise "File does not exist: #{file}"
 end
 

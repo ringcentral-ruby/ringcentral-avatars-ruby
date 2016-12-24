@@ -52,7 +52,7 @@ module RingCentral
       # Defaults to overwriting existing avatar
       def create_all(opts = {})
         opts[:overwrite] = true unless opts.key?(:overwrite)
-        @extensions.extensions_hash.each do |ext_id, ext|
+        @extensions.extensions_hash.each do |_ext_id, ext|
           create_avatar ext, opts
         end
         load_extensions
@@ -155,7 +155,7 @@ module RingCentral
 
       def avatar_blob(text, style = nil)
         style = @style if style.nil?
-        blob = @style == 'initials' \
+        blob = style == 'initials' \
           ? Avatarly.generate_avatar(text, @avatarly_opts) \
           : RubyIdenticon.create(text, @identicon_opts)
         inflate_avatar_blob_png blob
@@ -179,7 +179,7 @@ module RingCentral
 
       def avatar_faraday_uploadio(text, style = nil)
         file = avatar_temp_file text, style
-        image = Faraday::UploadIO.new file.path, avatar_mime_type
+        Faraday::UploadIO.new file.path, avatar_mime_type
       end
 
       def avatar_format
