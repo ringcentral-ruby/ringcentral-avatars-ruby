@@ -155,7 +155,7 @@ module RingCentral
 
       def avatar_blob(text, style = nil)
         style = @style if style.nil?
-        blob = @style == 'initials' \
+        blob = style == 'initials' \
           ? Avatarly.generate_avatar(text, @avatarly_opts) \
           : RubyIdenticon.create(text, @identicon_opts)
         inflate_avatar_blob_png blob
