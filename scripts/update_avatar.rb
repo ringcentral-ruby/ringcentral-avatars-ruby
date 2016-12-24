@@ -8,12 +8,12 @@ require 'pp'
 
 options = {}
 OptionParser.new do |opts|
-  opts.banner = "Usage: example.rb [options]"
+  opts.banner = 'Usage: example.rb [options]'
 
-  opts.on("-a", "--all", "Update all users") do |v|
+  opts.on('-a', '--all', 'Update all users') do |v|
     options[:all] = v
   end
-  opts.on("-o", "--overwrite", "Overwrite existing avatars") do |v|
+  opts.on('-o', '--overwrite', 'Overwrite existing avatars') do |v|
     options[:overwrite] = v
   end
 end.parse!
