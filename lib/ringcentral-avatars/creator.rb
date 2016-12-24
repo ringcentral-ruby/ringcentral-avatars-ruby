@@ -124,7 +124,7 @@ end
 module RingCentral
   module Avatars
     class MultiAvatar
-      DEFAULT_STYLE = 'initials'
+      DEFAULT_STYLE = 'initials'.freeze
       AVATARLY_DEFAULTS = {
         size: 600,
         format: 'png'
