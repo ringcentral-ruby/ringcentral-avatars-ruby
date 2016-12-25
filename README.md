@@ -3,8 +3,8 @@ RingCentral Avatars
 
 [![Gem Version][gem-version-svg]][gem-version-link]
 [![Build Status][build-status-svg]][build-status-link]
-[![Codacy Badge][codacy-svg]][codacy-link]
 [![Dependency Status][dependency-status-svg]][dependency-status-link]
+[![Codacy Badge][codacy-svg]][codacy-link]
 [![Code Climate][codeclimate-status-svg]][codeclimate-status-link]
 [![Scrutinizer Code Quality][scrutinizer-status-svg]][scrutinizer-status-link]
 [![Downloads][downloads-svg]][downloads-link]
