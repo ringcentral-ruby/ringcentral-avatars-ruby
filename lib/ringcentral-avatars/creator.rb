@@ -3,6 +3,8 @@ require 'chunky_png'
 require 'ruby_identicon'
 
 require 'faraday'
+require 'faraday_middleware-request-retry'
+require 'logger'
 require 'mime/types'
 require 'ringcentral_sdk'
 require 'tempfile'
@@ -21,6 +23,7 @@ module RingCentral
       attr_accessor :client
       attr_accessor :extensions
       attr_accessor :png_metadata
+      attr_accessor :retry
 
       ##
       # Requires RingCentralSdk instance
@@ -30,12 +33,16 @@ module RingCentral
         if !opts.key?(:initials_opts) && opts.key?(:avatar_opts)
           opts[:initials_opts] = opts[:avatar_opts]
         end
-        if opts.key(:png_metadata)
+        if opts.key? :png_metadata
           opts[:png_metadata] = PNG_DEFAULT_METADATA.merge(opts[:png_metadata])
         else
           opts[:png_metadata] = PNG_DEFAULT_METADATA
         end
+        opts[:logger] = @client.config.logger
+        @retry = opts.key?(:retry) && opts[:retry] ? true : false
+        opts[:retry] = @retry
         @avatars = RingCentral::Avatars::MultiAvatar.new opts
+        @retry_util = FaradayMiddleware::Request::RetryUtil.new logger: client.config.logger
         load_extensions
       end
 
@@ -62,10 +69,13 @@ module RingCentral
       # Convenience method for creating avatar for authorized extension
       # Defaults to not overwriting existing avatar
       def create_mine(opts = {})
-        res_ext = @client.http.get 'account/~/extension/~'
-        res_av = create_avatar res_ext.body, opts
-        load_extensions
-        res_av
+        try_req = true
+        while try_req
+          res_ext = @client.http.get 'account/~/extension/~'
+          try_req = retry_status res_ext
+        end
+        res_avt = create_avatar res_ext.body, opts
+        res_avt
       end
 
       ##
@@ -73,10 +83,23 @@ module RingCentral
       # Defaults to not overwriting existing avatar
       def create_avatar(ext, opts = {})
         opts[:overwrite] = false unless opts.key?(:overwrite)
-        return if avatar?(ext) && !opts[:overwrite]
+        if avatar?(ext) && !opts[:overwrite]
+          return nil
+        end
         url = "account/~/extension/#{ext['id']}/profile-image"
-        image = @avatars.avatar_faraday_uploadio ext['name']
-        @client.http.put url, image: image
+        res_avt = nil
+        try_req = true
+        while try_req
+          image = @avatars.avatar_faraday_uploadio ext['name']
+          res_avt = @client.http.put url, image: image
+          try_req = retry_status res_avt
+        end
+        res_avt
+      end
+
+      def retry_status(res)
+        return false unless @retry
+        @retry_util.retry_status(res.status, res.headers['Retry-After'])
       end
 
       ##
@@ -141,6 +164,7 @@ module RingCentral
         @identicon_opts = inflate_identicon_opts opts[:identicon_opts]
         @style = opts.key?(:style) ? opts[:style] : DEFAULT_STYLE
         @png_metadata = opts.key?(:png_metadata) ? opts[:png_metadata] : {}
+        @logger = opts.key?(:logger) ? opts[:logger] : Logger.new(STDOUT)
       end
 
       def inflate_avatarly_opts(avatarly_opts = {})
@@ -179,6 +203,7 @@ module RingCentral
 
       def avatar_faraday_uploadio(text, style = nil)
         file = avatar_temp_file text, style
+        @logger.debug "Building Avatar Temp File: #{file.path}"
         Faraday::UploadIO.new file.path, avatar_mime_type
       end
 

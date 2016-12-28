@@ -1,5 +1,6 @@
 #!ruby
 
+require 'logger'
 require 'optparse'
 require 'ringcentral_sdk'
 require 'ringcentral-avatars'
@@ -23,8 +24,12 @@ end.parse!
 
 client = RingCentralSdk::REST::Client.new do |config|
   config.load_env = true
+  config.logger = Logger.new STDOUT
+  config.logger.level = Logger::DEBUG
   config.retry = true if options.key? :all
 end
+
+pp client.token.to_hash
 
 avatars = RingCentral::Avatars.new client
 
@@ -32,5 +37,8 @@ if options.key? :all
   avatars.create_all overwrite: options[:overwrite]
 else
   res = avatars.create_mine overwrite: options[:overwrite] # overwrite existing user avatar
+  puts res.class.name
   puts res.status
 end
+
+puts 'DONE'
