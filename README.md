@@ -50,7 +50,7 @@ $ gem install ringcentral-avatars
 require 'ringcentral-avatars'
 require 'ringcentral_sdk'
 
-client = RingCentralSdk.new [...]
+client = RingCentralSdk::REST::Client.new [...]
 
 avatars = RingCentral::Avatars.new client                                # Default options
 avatars = RingCentral::Avatars.new client, avatar_opts: {font_size: 275} # Avatarly options
