@@ -21,11 +21,10 @@ end.parse!
 # Set your credentials in the .env file
 # Use the rc_config_sample.env.txt file as a scaffold
 
-config = RingCentralSdk::REST::Config.new.load_dotenv
-
-client = RingCentralSdk::REST::Client.new
-client.set_app_config config.app
-client.authorize_user config.user
+client = RingCentralSdk::REST::Client.new do |config|
+  config.load_env = true
+  config.retry = true if options.key? :all
+end
 
 avatars = RingCentral::Avatars.new client
 

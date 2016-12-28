@@ -24,11 +24,9 @@ unless File.exist? file
   raise "File does not exist: #{file}"
 end
 
-config = RingCentralSdk::REST::Config.new.load_dotenv
-
-client = RingCentralSdk::REST::Client.new
-client.set_app_config config.app
-client.authorize_user config.user
+client = RingCentralSdk::REST::Client.new do |config|
+  config.load_env = true
+end
 
 types = MIME::Types.type_for options[:filetype]
 
