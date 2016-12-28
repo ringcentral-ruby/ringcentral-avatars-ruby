@@ -1,5 +1,6 @@
 #!ruby
 
+require 'logger'
 require 'optparse'
 require 'ringcentral_sdk'
 require 'ringcentral-avatars'
@@ -21,11 +22,14 @@ end.parse!
 # Set your credentials in the .env file
 # Use the rc_config_sample.env.txt file as a scaffold
 
-config = RingCentralSdk::REST::Config.new.load_dotenv
+client = RingCentralSdk::REST::Client.new do |config|
+  config.load_env = true
+  config.logger = Logger.new STDOUT
+  config.logger.level = Logger::DEBUG
+  config.retry = true if options.key? :all
+end
 
-client = RingCentralSdk::REST::Client.new
-client.set_app_config config.app
-client.authorize_user config.user
+pp client.token.to_hash
 
 avatars = RingCentral::Avatars.new client
 
@@ -33,5 +37,8 @@ if options.key? :all
   avatars.create_all overwrite: options[:overwrite]
 else
   res = avatars.create_mine overwrite: options[:overwrite] # overwrite existing user avatar
+  puts res.class.name
   puts res.status
 end
+
+puts 'DONE'

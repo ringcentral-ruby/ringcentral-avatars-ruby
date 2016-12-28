@@ -50,7 +50,7 @@ $ gem install ringcentral-avatars
 require 'ringcentral-avatars'
 require 'ringcentral_sdk'
 
-client = RingCentralSdk.new [...]
+client = RingCentralSdk::REST::Client.new [...]
 
 avatars = RingCentral::Avatars.new client                                # Default options
 avatars = RingCentral::Avatars.new client, avatar_opts: {font_size: 275} # Avatarly options
@@ -65,7 +65,8 @@ avatars.create_avatar ext                  # create a default for an extension h
 avatars.create_avatar ext, overwrite: true # overwrite existing for an extension hash
 ```
 
-See [Avatarly](https://github.com/lucek/avatarly) for avatar customization options. The default avatar size is `600`.
+* For batch operations, consider using [RingCentral SDK's] `config.retry = true` option for automatic handling of rate limiting using 429 headers.
+* For avatar customization, see [Avatarly](https://github.com/lucek/avatarly) options. The default avatar size is `600`.
 
 ### Adding PNG Metadata
 

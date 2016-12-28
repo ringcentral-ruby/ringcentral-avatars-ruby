@@ -6,7 +6,7 @@ version = $1
 Gem::Specification.new do |s|
   s.name        = lib
   s.version     = version
-  s.date        = '2016-11-19'
+  s.date        = '2016-12-28'
   s.summary     = 'RingCentral library for auto-generating Gmail style avatars'
   s.description = 'Create RingCentral avatars using Gmail-style avatars'
   s.authors     = ['John Wang']
@@ -22,12 +22,12 @@ Gem::Specification.new do |s|
   s.add_dependency 'chunky_png', '~> 1.3', '>= 1.3.8'
   s.add_dependency 'faraday', '~> 0.9', '>= 0.9'
   s.add_dependency 'mime-types', '~> 3.0', '>= 3.1'
-  s.add_dependency 'ringcentral_sdk', '~> 1', '>= 1.3.4'
+  s.add_dependency 'ringcentral_sdk', '~> 2', '>= 2.0.2'
   s.add_dependency 'ruby_identicon', '~> 0', '>= 0.0.5'
 
   s.add_development_dependency 'coveralls', '~> 0'
   s.add_development_dependency 'mocha', '~> 1'
-  s.add_development_dependency 'rake', '~> 11'
+  s.add_development_dependency 'rake', '~> 12'
   s.add_development_dependency 'simplecov', '~> 0'
   s.add_development_dependency 'test-unit', '~> 3'
 end

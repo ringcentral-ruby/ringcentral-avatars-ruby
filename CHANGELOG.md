@@ -1,8 +1,8 @@
 CHANGELOG
 ---------
-- **2016-12-02**: 0.4.3
+- **2016-12-28**: 0.5.0
+  - Add auto-retry for `429` and `503` errors.
   - Add test script to try PNG, JPG, and GIF filetypes
-- **2016-11-23**: 0.4.2
   - Add article `NEWS.md`
 - **2016-11-19**: 0.4.1
   - Fix RubyDoc.info documentation rendering
