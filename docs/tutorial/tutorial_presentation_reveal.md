@@ -45,7 +45,7 @@ Docs: https://ringcentral-sdk-ruby.rtfd.org
 ```ruby
 require 'ringcentral_sdk'
 client = RingCentralSdk::REST::Client.new do |config|
-  # config data
+  # your config params
 end
 
 res = client.get 'account/~/extension'
@@ -134,7 +134,7 @@ Implementation: [ringcentral_sdk/rest/cache/extensions.rb](https://github.com/gr
 
 ### Creating the avatar
 
-Creating Initials with avatarly
+Creating initials with avatarly
 
 ```ruby
 require 'avatarly'
@@ -196,7 +196,7 @@ Built into SDK
 require 'ringcentral_sdk'
 
 client = RingCentralSdk::REST::Client.new do |config|
-  # ... params
+  # your config params
   config.retry = true # retry throttled API calls
 end
 ```
@@ -214,7 +214,7 @@ require 'ringcentral-avatars'
 require 'ringcentral_sdk'
 
 client = RingCentralSdk::REST::Client.new do |config|
-  # params
+  # your config params
   config.retry = true
 end
 
