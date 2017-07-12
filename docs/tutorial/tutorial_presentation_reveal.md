@@ -243,4 +243,4 @@ Implementation: [ringcentral-avatars-ruby/scripts/update_avatar.rb](https://gith
 * SDK: [github.com/grokify/ringcentral-sdk-ruby](https://github.com/grokify/ringcentral-sdk-ruby)
 * Dev Community: [devcommunity.ringcentral.com](https://devcommunity.ringcentral.com/)
 * Stack Overflow: [stackoverflow.com/questions/tagged/ringcentral](https://stackoverflow.com/questions/tagged/ringcentral)
-* Twitter / Medium: @grokify
+* Github / Twitter / Medium: @grokify
