@@ -91,7 +91,7 @@ To retrieve the extension `profileImage` information for a user, retrieve the us
 
 ### Update user profile image
 
-To update an image make a `PUT` request to the user's `account/~/extension/~/profile-image` endpoint using `multipart/formdata` and the `image` attribute. 
+To update an image make a `PUT` request to the user's `account/~/extension/~/profile-image` endpoint using `multipart/form-data` and the `image` attribute. 
 
 #### Example request
 
@@ -248,25 +248,19 @@ avatars.create_avatar ext, overwrite: true # overwrite existing for an extension
 
 ### Throttling
 
-When retrieving and uploading many images, your application can be throttled if it is making API requests above the rate specified in your usage plan. To resolve this, you can make calls one at a time and examine the response status and headers. For example:
-
-1. A `429` status will indicate your app is being throttled. It should wait the specified amount of seconds specified in the `Retry-After` header and then retry the request.
-2. A `X-Rate-Limit-Remaining` of `0` will indicate that the app has used up its allotment of API calls for the window and should wait the amount of seconds specified in the `X-Rate-Limit-Window` header.
-
-Pseudo code for this is:
+When retrieving and uploading many images, your application can be throttled if it is making API requests above the rate specified in your usage plan. To resolve this, you can make calls one at a time and examine the response status and headers. The Ruby SDK can do this automatically for you if you configure it when creating the SDK:
 
 ```ruby
-if res.status == 429
-  // Wait for the specified time
-  sleep res.headers['Retry-After'].to_i
-  // Retry the request
-  client.http.get ...
-elsif res.headers['X-Rate-Limit-Remaining'].to_i == 0
-  sleep res.headers['X-Rate-Limit-Window'].to_i
+require 'rinngcentral_sdk'
+
+client = RingCentralSdk::REST::Client.new do |config|
+  # Your other config parameters
+
+  # Enable HTTP retries for 429, 503, and 504 errors
+  # Set custom codes and retry after using retry_options
+  config.retry = true
 end
 ```
-
-In a future release, this type of throttling should be automatically built into the Ruby SDK.
 
 ## Summary
 

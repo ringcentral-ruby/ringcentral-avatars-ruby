@@ -1,4 +1,4 @@
-source ENV['GEM_SOURCE'] || 'https://rubygems.org'
+source ENV['GEM_SOURCE'] || 'http://rubygems.org'
 
 gem 'chunky_png'
 gem 'multi_json'

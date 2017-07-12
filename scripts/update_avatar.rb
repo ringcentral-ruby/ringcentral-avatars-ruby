@@ -37,8 +37,10 @@ if options.key? :all
   avatars.create_all overwrite: options[:overwrite]
 else
   res = avatars.create_mine overwrite: options[:overwrite] # overwrite existing user avatar
-  puts res.class.name
-  puts res.status
+  unless res.nil?
+    puts res.class.name
+    puts res.status
+  end
 end
 
 puts 'DONE'
