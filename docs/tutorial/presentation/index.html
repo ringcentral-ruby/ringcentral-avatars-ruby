@@ -44,7 +44,7 @@ Docs: https://ringcentral-sdk-ruby.rtfd.org
 1. For each user, create and upload avatar
 1. Handle rate limiting
 </script></section><section  data-markdown><script type="text/template">
-### Retrieving users without images
+### Retrieving Users Without Images
 
 ```ruby
 require 'ringcentral_sdk'
@@ -59,6 +59,8 @@ res.body['records'].each do |ext|
   # create image and upload image
 end
 ```
+
+Implementation: [ringcentral-avatars-ruby/lib/ringcentral-avatars/creator.rb](https://github.com/grokify/ringcentral-avatars-ruby/blob/master/lib/ringcentral-avatars/creator.rb)
 </script></section><section  data-markdown><script type="text/template">
 ### Extension ProfileImage property
 
@@ -110,7 +112,7 @@ The paging and navigation properties
 }
 ```
 </script></section><section  data-markdown><script type="text/template">
-### Retrieving multiple pages of users
+### Retrieving Multiple Pages of Users
 
 ```ruby
 res = @client.http.get 'account/~/extension'
@@ -128,7 +130,7 @@ end
 
 Implementation: [ringcentral_sdk/rest/cache/extensions.rb](https://github.com/grokify/ringcentral-sdk-ruby/blob/master/lib/ringcentral_sdk/rest/cache/extensions.rb)
 </script></section><section  data-markdown><script type="text/template">
-### Creating the avatar
+### Creating the Avatar
 
 Creating initials with avatarly
 

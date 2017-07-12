@@ -40,7 +40,7 @@ Docs: https://ringcentral-sdk-ruby.rtfd.org
 
 ---
 
-### Retrieving users without images
+### Retrieving Users Without Images
 
 ```ruby
 require 'ringcentral_sdk'
@@ -55,6 +55,8 @@ res.body['records'].each do |ext|
   # create image and upload image
 end
 ```
+
+Implementation: [ringcentral-avatars-ruby/lib/ringcentral-avatars/creator.rb](https://github.com/grokify/ringcentral-avatars-ruby/blob/master/lib/ringcentral-avatars/creator.rb)
 
 ---
 
@@ -112,7 +114,7 @@ The paging and navigation properties
 
 ---
 
-### Retrieving multiple pages of users
+### Retrieving Multiple Pages of Users
 
 ```ruby
 res = @client.http.get 'account/~/extension'
@@ -132,7 +134,7 @@ Implementation: [ringcentral_sdk/rest/cache/extensions.rb](https://github.com/gr
 
 ---
 
-### Creating the avatar
+### Creating the Avatar
 
 Creating initials with avatarly
 
