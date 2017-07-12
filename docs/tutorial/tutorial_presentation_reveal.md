@@ -241,8 +241,9 @@ Implementation: [ringcentral-avatars-ruby/scripts/update_avatar.rb](https://gith
 
 ### Thanks!
 
-* Avatars: [github.com/grokify/ringcentral-avatars-ruby](https://github.com/grokify/ringcentral-avatars-ruby)
+* Code: [github.com/grokify/ringcentral-avatars-ruby](https://github.com/grokify/ringcentral-avatars-ruby)
 * SDK: [github.com/grokify/ringcentral-sdk-ruby](https://github.com/grokify/ringcentral-sdk-ruby)
+* Dev Portal: [developer.ringcentral.com](https://developer.ringcentral.com)
 * Dev Community: [devcommunity.ringcentral.com](https://devcommunity.ringcentral.com/)
 * Stack Overflow: [stackoverflow.com/questions/tagged/ringcentral](https://stackoverflow.com/questions/tagged/ringcentral)
 * Github / Twitter / Medium: @grokify
