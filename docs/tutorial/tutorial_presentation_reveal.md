@@ -157,7 +157,7 @@ Implementation: [ringcentral-avatars-ruby/lib/ringcentral-avatars/creator.rb](ht
 Converting blob to a `Faraday::UploadIO` object
 
 ```ruby
-file = Tempfile.new ['avatar', avatar_extension]
+file = Tempfile.new ['avatar', 'png']
 file.binmode
 file.write blob
 file.flush
@@ -230,9 +230,10 @@ Implementation: [ringcentral-avatars-ruby/scripts/update_avatar.rb](https://gith
 
 ---
 
-### Credits
+### About this Presentation
 
-* Reveal-md: https://github.com/webpro/reveal-md
+* Made Using Reveal-md: https://github.com/webpro/reveal-md
+* Hosted at: https://grokify.github.io/ringcentral-avatars-ruby/tutorial/presentation
 
 ---
 
@@ -240,6 +241,6 @@ Implementation: [ringcentral-avatars-ruby/scripts/update_avatar.rb](https://gith
 
 * Avatars: [github.com/grokify/ringcentral-avatars-ruby](https://github.com/grokify/ringcentral-avatars-ruby)
 * SDK: [github.com/grokify/ringcentral-sdk-ruby](https://github.com/grokify/ringcentral-sdk-ruby)
-* Community: [devcommunity.ringcentral.com](https://devcommunity.ringcentral.com/)
+* Dev Community: [devcommunity.ringcentral.com](https://devcommunity.ringcentral.com/)
 * Stack Overflow: [stackoverflow.com/questions/tagged/ringcentral](https://stackoverflow.com/questions/tagged/ringcentral)
 * Twitter / Medium: @grokify
