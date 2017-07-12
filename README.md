@@ -20,6 +20,11 @@ This library will build [RingCentral](https://ringcentral.com) avatars using Gma
 * specific extensions
 * authorized user extension only
 
+Additional resources include:
+
+* [Tutorial Video - https://youtu.be/8jCwxfWl_a4](https://www.youtube.com/watch?v=8jCwxfWl_a4)
+* [Tutorial Slides - grokify.github.io/ringcentral-avatars-ruby/tutorial/presentation/](https://grokify.github.io/ringcentral-avatars-ruby/tutorial/presentation/)
+
 By default, the images will look like the following in the RingCentral softphone:
 
 ![](https://raw.githubusercontent.com/ringcentral-ruby/ringcentral-avatars-ruby/master/docs/images/ringcentral-avatars-softphone.png)
