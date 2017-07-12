@@ -87,7 +87,7 @@ file.flush
 fileio = Faraday::UploadIO.new file.path, 'image/png'
 
 # post the image
-client.http.put 'account/~/extension/profile-image', image: fileio
+client.http.put 'account/~/extension/~/profile-image', image: fileio
 ```
 
 If you are using languages other than Ruby, you can use the steps above to create your own solution. If you are using Ruby, this has been done for you and you can use the ringcentral-avatars-ruby Ruby gem directly as follows with more options available in the README.md file:
