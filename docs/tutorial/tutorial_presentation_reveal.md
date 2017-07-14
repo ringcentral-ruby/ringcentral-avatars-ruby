@@ -10,7 +10,7 @@ By John Wang
 
 ## Overview
 
-* Dfferentiated default avatars are a better UX
+* Differentiated default avatars are a better UX
 * RingCentral does not offer this out of the box
 * It is easily achieved using the RingCentral API
 
@@ -229,6 +229,12 @@ Implementation: [ringcentral-avatars-ruby/scripts/update_avatar.rb](https://gith
 ---
 
 # Demo
+
+1. Login to RC Softphone and open address book
+1. Configure `.env` file used by [`update_avatar.rb`](https://github.com/grokify/ringcentral-avatars-ruby/blob/master/scripts/update_avatar.rb)
+1. Run [`update_avatar.rb`](https://github.com/grokify/ringcentral-avatars-ruby/blob/master/scripts/update_avatar.rb)
+
+Watch at https://youtu.be/8jCwxfWl_a4
 
 ---
 
