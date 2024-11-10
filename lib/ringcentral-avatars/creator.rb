@@ -81,6 +81,7 @@ module RingCentral
         if avatar?(ext) && !opts[:overwrite]
           return nil
         end
+
         url = "account/~/extension/#{ext['id']}/profile-image"
         res_avt = nil
         try_req = true
@@ -160,7 +161,7 @@ module RingCentral
         @identicon_opts = inflate_identicon_opts opts[:identicon_opts]
         @style = opts.key?(:style) ? opts[:style] : DEFAULT_STYLE
         @png_metadata = opts.key?(:png_metadata) ? opts[:png_metadata] : {}
-        @logger = opts.key?(:logger) ? opts[:logger] : Logger.new(STDOUT)
+        @logger = opts.key?(:logger) ? opts[:logger] : Logger.new($stdout)
       end
 
       def inflate_avatarly_opts(avatarly_opts = {})
@@ -212,6 +213,7 @@ module RingCentral
         if types.empty?
           raise "Unknown avatar format: #{avatar_format}"
         end
+
         types[0].to_s
       end
 
