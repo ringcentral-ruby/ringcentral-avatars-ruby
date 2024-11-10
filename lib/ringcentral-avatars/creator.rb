@@ -18,12 +18,7 @@ module RingCentral
         'Description' => 'RingCentral Default Avatar'
       }.freeze
 
-      attr_accessor :avatar_opts
-      attr_accessor :avatars
-      attr_accessor :client
-      attr_accessor :extensions
-      attr_accessor :png_metadata
-      attr_accessor :retry
+      attr_accessor :avatar_opts, :avatars, :client, :extensions, :png_metadata, :retry
 
       ##
       # Requires RingCentralSdk instance
@@ -94,6 +89,7 @@ module RingCentral
           res_avt = @client.http.put url, image: image
           try_req = retry_status res_avt
         end
+
         res_avt
       end
 
